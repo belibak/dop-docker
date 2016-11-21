@@ -3,3 +3,5 @@ sources/Data*
 sources/venv/*
 nginx/ssl/*
 *.swp
+commit.sh
+
