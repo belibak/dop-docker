@@ -1,5 +1,5 @@
-creds/*
-sources/Data_Optimization_Prototype/*
+/creds/*
+/sources/Data_Optimization_Prototype/*
 /sources/venv/*
 !/sources/venv/README
 nginx/ssl/*
