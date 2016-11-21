@@ -1,5 +1,5 @@
 creds/*
-sources/Data*
+sources/Data_Optimization_Prototype/*
 sources/venv/*
 nginx/ssl/*
 *.swp
