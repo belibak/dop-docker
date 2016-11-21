@@ -1,6 +1,9 @@
 FROM ubuntu:16.04
 MAINTAINER rusetskialexander@gmail.com
 
+COPY sources/Data_Optimization_Prototype /Data_Optimization_Prototype
+COPY sources/venv /venv
+
 RUN adduser dop --shell /bin/bash --disabled-password --gecos "" && chown dop:dop /var/log -R
 	#Install required packages
 
@@ -31,8 +34,8 @@ RUN apt-get update &&\
 #RUN echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config &&\
 #  git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git
 
-COPY sources/Data_Optimization_Prototype /Data_Optimization_Prototype
-COPY sources/venv /venv
+#COPY sources/Data_Optimization_Prototype /Data_Optimization_Prototype
+#COPY sources/venv /venv
 
 #Create virtual environment
 ENV VENV /venv
