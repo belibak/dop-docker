@@ -1,0 +1,4 @@
+creds/*
+sources/Data*
+sources/venv/*
+*.swp
