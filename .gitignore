@@ -1,7 +1,7 @@
 creds/*
 sources/Data_Optimization_Prototype/*
 sources/venv/*
-!sources/venv
+!/sources/venv
 nginx/ssl/*
 *.swp
 commit.sh
