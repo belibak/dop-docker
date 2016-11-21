@@ -35,7 +35,7 @@ switch(PROD_ENV) {
                 'process.env': {
                     'NODE_ENV': JSON.stringify('production')
                 },
-                'SOCKET_IP': JSON.stringify('35.160.174.145'),
+                'SOCKET_IP': JSON.stringify('2lb-634657297.us-west-2.elb.amazonaws.com'),
             }),
             new webpack.optimize.UglifyJsPlugin({
                 minimize: true,

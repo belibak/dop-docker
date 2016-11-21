@@ -1,4 +1,5 @@
 creds/*
 sources/Data*
 sources/venv/*
+nginx/ssl/*
 *.swp

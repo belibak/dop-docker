@@ -1,0 +1,14 @@
+machine:
+  timezone:
+    Europe/Minsk
+  services:
+    - docker
+  
+  
+#dependencies:
+# pre:
+#    - pip install awscli 
+    
+test:
+  pre:
+    - bash run-on-circleci.sh
