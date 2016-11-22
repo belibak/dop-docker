@@ -5,9 +5,9 @@ machine:
     - docker
   
   
-#dependencies:
-# pre:
-#    - pip install awscli 
+dependencies:
+ pre:
+    - pip install docker-compose 
     
 test:
   pre:

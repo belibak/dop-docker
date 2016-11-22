@@ -19,6 +19,7 @@ services:
       - celery
       - websockets
       - rabbit
+      - mysql
   
   celery:
     #image: 144049946307.dkr.ecr.us-west-2.amazonaws.com/dop-web:latest
@@ -53,3 +54,10 @@ services:
       - "5672:5672"
     env_file:
       - creds/rabbit/creds.env
+      
+  mysql:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    env_file:
+      - creds/mysql/mysql.env

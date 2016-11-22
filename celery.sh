@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sleep 30
 DOP=/Data_Optimization_Prototype
 CFGS=/cfgs/configs
 CRDS=/cfgs/creds
