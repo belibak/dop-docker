@@ -9,6 +9,7 @@ RUN adduser dop --shell /bin/bash --disabled-password --gecos "" && chown dop:do
 
 RUN apt-get update &&\
   apt-get install -y\
+  git\
   supervisor\
   curl\
   python\
