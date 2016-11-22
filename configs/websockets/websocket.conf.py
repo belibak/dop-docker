@@ -1,2 +1,2 @@
-WS_SERVER_IP = '35.161.34.217'
+WS_SERVER_IP = 'websockets'
 WS_SERVER_PORT = 8283

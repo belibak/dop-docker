@@ -1,4 +1,5 @@
 /creds/*
+!/creds
 /sources/Data_Optimization_Prototype/*
 /sources/venv/*
 !/sources/venv/README

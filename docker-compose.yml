@@ -3,16 +3,53 @@ version: "2"
 services:
   web:
     #image: 144049946307.dkr.ecr.us-west-2.amazonaws.com/dop-web:latest
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-web
     command: /app/./all.sh
     volumes:
       - .:/app
-      - /home/white/web:/cfgs
+      - .:/cfgs
       - /volumes:/volumes            
     ports:
       - "80:80"
       - "443:443"    
     #restart: always
+    links:
+      - celery
+      - websockets
+      - rabbit
   
- 
-    
+  celery:
+    #image: 144049946307.dkr.ecr.us-west-2.amazonaws.com/dop-web:latest
+    build:
+      context: . 
+      dockerfile: Dockerfile-celery 
+    command: /app/./celery.sh
+    volumes:
+      - .:/app
+      - .:/cfgs
+      - /volumes:/volumes
+    links:
+      - rabbit
+
+  websockets: 
+    build:
+      context: .
+      dockerfile: Dockerfile-websockets-cleared
+    volumes:
+      - .:/app
+      - .:/cfgs
+      - /volumes:/volumes
+    command: /app/./websockets.sh
+    ports: 
+      - "8283:8283"
+    links:
+      - rabbit
+  
+  rabbit:
+    image: rabbitmq:3
+    ports:
+      - "5672:5672"
+    env_file:
+      - creds/rabbit/creds.env

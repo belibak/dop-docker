@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#sleep 120
 DOP=/Data_Optimization_Prototype
 CFGS=/cfgs/configs
 CRDS=/cfgs/creds
@@ -15,9 +15,6 @@ function fe() {
     fi
 }
 
-fe $CFGS/nginx/nginx.conf /etc/nginx/nginx.conf
-cp -r $CFGS/nginx/ssl /ssl
-
 fe $CFGS/websockets/websocket.conf.py "$DOP"/rl_proto2/conf/websocket.conf.py
 fe $CFGS/websockets/Socket.js $DOP/react/app/utils/Socket.js 
 fe $CFGS/websockets/webpack.config.js $DOP/react/webpack.config.js
@@ -27,11 +24,8 @@ fe $CRDS/salesforce/local_settings.py $DOP/integrations/salesforce/local_setting
 
 cd $DOP/react 
 source $NVM_DIR/nvm.sh
-npm run build-amazon
+#npm run build-amazon
 cd $DOP
-#/venv/bin/python manage.py collectstatic -lc --noinput
-#/venv/bin/python manage.py migrate
 
-service nginx start
 service supervisor start
 tail -f /var/log/app.log
