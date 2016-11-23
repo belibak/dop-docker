@@ -1,6 +1,9 @@
 # dop-docker
 ##### How to install docker - http://docs-stage.docker.com/engine/installation/
-##### To install docker-compose - pip install docker-compose
+##### To install docker-compose - ```pip install docker-compose```
+
+#### Clone the dop repo into sources directory
+```cd dop-docker/sources && git clone dop.git```
 
 ### Configs
 
@@ -12,6 +15,7 @@ In websockets.conf.py : ```WS_SERVER_IP = '192.168.254.254'``` if runs locally f
 
 #### Credentials
 * creds/  directory must include  ```local_settings.py``` file
+```BROKER_URL = 'amqp://user:passwd@rabbit:5672//'``` if runs locally, user and passwd from creds/rabbitmq/creds.env
 * creds/salesforce must include  ```local_settings.py``` file
 
 * In creds/rabbitmq/creds.env need to set ``` RABBITMQ_DEFAULT_USER=dop
