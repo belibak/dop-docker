@@ -1,12 +1,38 @@
 # dop-docker
 ##### How to install docker - http://docs-stage.docker.com/engine/installation/
 ##### To install docker-compose - pip install docker-compose
+
+### Configs
+
+* Nginx (configs/nginx/nginx.conf): If websockets server runs at rmote server  - set $wsIp http://212.212.212.212:8283; if runs locally from docker-compose - set $wsIp http://websockets:8283;
+
+* Websockets (configs/websockets):
+In webpack.config.js: in case2 section ```'SOCKET_IP': JSON.stringify('domain.do')``` domain.do or ip must be visible  from your browser.
+In websockets.conf.py : ```WS_SERVER_IP = '192.168.254.254'``` if runs locally from docker-compose - set ```WS_SERVER_IP = 'websockets'```
+
+#### Credentials
+* creds/  directory must include  ```local_settings.py``` file
+* creds/salesforce must include  ```local_settings.py``` file
+
+* In creds/rabbitmq/creds.env need to set ``` RABBITMQ_DEFAULT_USER=dop
+RABBITMQ_DEFAULT_PASS=dop``` user and password to be used by RabbitMQ server.
+
+* creds/mysql/mysql.env same as rabbitmq
+
+### Build
+
 ```
 cd dop-docker
 ```
-
+* build cluster
 ```
 docker-compose build
 docker-compose up
 ```
 
+* build part of cluster
+```docker-compose build celery``` websockets, web, rabbit, mysql.
+
+### RUN
+
+* ```docker-compose up``` or ```docker-compose up web``` celery, mysql etc.
