@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-blacklist = ['pandas', 'lxml', 'boto', 'kyotocabinet']
+blacklist = ['pandas', 'lxml', 'boto']
 
 def get_strings(infile):
     strings = []
