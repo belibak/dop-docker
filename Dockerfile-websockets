@@ -2,36 +2,28 @@ FROM ubuntu:16.04
 MAINTAINER rusetskialexander@gmail.com
 
 COPY sources/Data_Optimization_Prototype /Data_Optimization_Prototype
-COPY sources/venv /venv
+#COPY sources/venv /venv
 
 RUN adduser dop --shell /bin/bash --disabled-password --gecos "" && chown dop:dop /var/log -R
 	#Install required packages
 
 RUN apt-get update &&\
-  apt-get install -y git\  
+  apt-get install -y\
+  git\
   supervisor\
   curl\
   python\
   python-virtualenv\
   build-essential\
-  libssl-dev\
-  libkrb5-dev\
-  gcc\
-  git\
-  libmysqlclient-dev \
-  mysql-client \
   python-dev libffi-dev \
-  libkyotocabinet-dev \
-  libxml2-dev \
-  libxslt1-dev\
-  nginx\
   vim
 	
 
 #Create virtual environment
+COPY configs/websockets/requirements.txt /webs-reqs.txt
 ENV VENV /venv
 RUN virtualenv --python=python2.7 $VENV
-RUN $VENV/bin/pip install -r /Data_Optimization_Prototype/requirements.txt
+RUN $VENV/bin/pip install -r /webs-reqs.txt
 
 COPY react/nvm_install.sh /nvm_install.sh
 WORKDIR /Data_Optimization_Prototype/react
