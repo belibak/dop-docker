@@ -11,7 +11,7 @@ def get_strings(infile):
 
 
 def build_file(outfile, blacklist = blacklist):
-    lst = get_strings('Data_Optimization_Prototype/requirements.txt')
+    lst = get_strings('requirements.txt')
     with open(outfile, 'w') as file:
         for string in lst:
             string1 = string.split('==')[0]
@@ -22,6 +22,6 @@ def build_file(outfile, blacklist = blacklist):
     file.close()
 
 if __name__ == "__main__":
-    build_file('Data_Optimization_Prototype/celery_requirements.txt')
+    build_file('celery_requirements.txt')
 
 
