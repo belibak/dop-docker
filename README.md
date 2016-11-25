@@ -30,7 +30,7 @@ cd dop-docker
 ```
 * build cluster
 ```
-docker-compose build
+./build.sh
 docker-compose up
 ```
 
