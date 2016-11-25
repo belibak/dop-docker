@@ -33,10 +33,15 @@ cd dop-docker
 ./build.sh
 docker-compose up
 ```
+To run in daemon mode 
+```docker-compose up -d```
 
 * build part of cluster
 ```docker-compose build celery``` websockets, web, rabbit, mysql.
 
 ### RUN
 
-* ```docker-compose up``` or ```docker-compose up web``` celery, mysql etc.
+* ```docker-compose up -d``` or ```docker-compose up -d web``` celery, mysql etc.
+
+### Delete images and containers
+```./rm-containers.sh```
