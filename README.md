@@ -12,8 +12,11 @@
   * if runs locally from docker-compose - ```set $wsIp http://websockets:8283;```
 
 * Websockets (configs/websockets):
-In webpack.config.js: in case2 section ```'SOCKET_IP': JSON.stringify('domain.do')``` domain.do or ip must be visible  from your browser.
-In websockets.conf.py : ```WS_SERVER_IP = '192.168.254.254'``` if runs locally from docker-compose - set ```WS_SERVER_IP = 'websockets'```
+  * In webpack.config.js:
+    * in case2 section ```'SOCKET_IP': JSON.stringify('domain.do')``` domain.do or ip must be visible  from your browser.
+  * In websockets.conf.py :
+  * ```WS_SERVER_IP = '192.168.254.254'```
+  * if runs locally from docker-compose - set ```WS_SERVER_IP = 'websockets'```
 
 #### Credentials
 
