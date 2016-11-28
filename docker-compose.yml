@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-web
+    container_name: dop-web
     command: /app/./all.sh
     volumes:
       - .:/app
