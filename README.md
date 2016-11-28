@@ -14,6 +14,9 @@ In webpack.config.js: in case2 section ```'SOCKET_IP': JSON.stringify('domain.do
 In websockets.conf.py : ```WS_SERVER_IP = '192.168.254.254'``` if runs locally from docker-compose - set ```WS_SERVER_IP = 'websockets'```
 
 #### Credentials
+
+* Copy or move creds-examples to creds ```cp -r creds-examples creds```
+
 * creds/  directory must include  ```local_settings.py``` file
 ```BROKER_URL = 'amqp://user:passwd@rabbit:5672//'``` if runs locally, user and passwd from creds/rabbitmq/creds.env
 * creds/salesforce must include  ```local_settings.py``` file
@@ -33,7 +36,7 @@ cd dop-docker
 ./build.sh
 docker-compose up
 ```
-To run in daemon mode 
+To run in daemon mode
 ```docker-compose up -d```
 
 * build part of cluster
