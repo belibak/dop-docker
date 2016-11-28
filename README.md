@@ -7,7 +7,9 @@
 
 ### Configs
 
-* Nginx (configs/nginx/nginx.conf): If websockets server runs at rmote server  - set $wsIp http://212.212.212.212:8283; if runs locally from docker-compose - set $wsIp http://websockets:8283;
+* Nginx (configs/nginx/nginx.conf):
+  * If websockets server runs at rmote server  - ```set $wsIp http://212.212.212.212:8283;```
+  * if runs locally from docker-compose - ```set $wsIp http://websockets:8283;```
 
 * Websockets (configs/websockets):
 In webpack.config.js: in case2 section ```'SOCKET_IP': JSON.stringify('domain.do')``` domain.do or ip must be visible  from your browser.
@@ -49,5 +51,5 @@ docker-compose up
   * ``` /venv/bin/python manage.py migrate```
   * ```exit```
 
-### Delete images and containers
+### Delete all images and containers
 ```./rm-containers.sh```
