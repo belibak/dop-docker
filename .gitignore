@@ -2,7 +2,7 @@
 !/creds
 /sources/Data_Optimization_Prototype/*
 /sources/venv/*
-!/sources/venv/README
+!/sources/venv/touch
 nginx/ssl/*
 *.swp
 commit.sh
