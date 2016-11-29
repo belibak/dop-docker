@@ -14,4 +14,6 @@ dependencies:
     - docker build -f Dockerfile-celery .
     - docker build -f Dockerfile-websockets . 
     
-
+test:
+  pre:
+    - /bin/bash circle-test.sh
