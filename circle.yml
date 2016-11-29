@@ -8,10 +8,10 @@ machine:
 dependencies:
  pre:
     - 
-    - cd sources && git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git && cd ..
+    - git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git sources
     - pip install docker-compose
-     
+    - docker build -t dop-base -f Dockerfile-base . 
     
-test:
-  pre:
-    - bash run-on-circleci.sh
+#test:
+#  pre:
+#    - bash run-on-circleci.sh
