@@ -6,4 +6,4 @@
 nginx/ssl/*
 *.swp
 commit.sh
-
+/pip-cache
