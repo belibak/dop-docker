@@ -1,4 +1,6 @@
 machine:
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   timezone:
     Europe/Minsk
   services:
@@ -13,7 +15,7 @@ dependencies:
     #- docker build -f Dockerfile-web .
     #- docker build -f Dockerfile-celery .
     #- docker build -f Dockerfile-websockets . 
-    - docker-compose -f docker-compose-circle.yml build
+    - docker-compose -fdocker-compose-circle.yml build
     
 test:
   pre:
