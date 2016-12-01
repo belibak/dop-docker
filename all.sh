@@ -5,6 +5,14 @@ CFGS=/cfgs/configs
 CRDS=/cfgs/creds
 NVM_DIR=/usr/local/nvm
 
+echo '' > /var/log/ringlead/app.log
+chown dop:dop /var/log/ringlead/app.log
+chmod 777 /var/log/ringlead -R
+mkdir -p /Data_Optimization_Prototype/www/static
+mkdir -p /Data_Optimization_Prototype/datatasks/db_files/
+mkdir /Data_Optimization_Prototype/media/export_files -p
+chown dop:dop /Data_Optimization_Prototype -R
+
 function fe() {
   if [ -f $1 ]
     then 
@@ -26,12 +34,18 @@ fe $CRDS/local_settings.py $DOP/rl_proto2/local_settings.py
 fe $CRDS/salesforce/local_settings.py $DOP/integrations/salesforce/local_settings.py 
 
 cd $DOP/react 
+
 source $NVM_DIR/nvm.sh
+npm install
+npm install react-tipsy
+echo -e "\n\n\n\n\nRunning npm build...\n\n"
 npm run build-amazon
 cd $DOP
-#/venv/bin/python manage.py collectstatic -lc --noinput
+/venv/bin/python manage.py collectstatic -lc --noinput
 #/venv/bin/python manage.py migrate
 
 service nginx start
 service supervisor start
+
+echo "web-container started..."
 tail -f /var/log/app.log

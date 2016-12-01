@@ -1,4 +1,4 @@
-FROM dop-base
+FROM ringleaddev/base
 MAINTAINER rusetskialexander@gmail.com
 
 WORKDIR /Data_Optimization_Prototype/
@@ -9,10 +9,12 @@ RUN mkdir -p  /Data_Optimization_Prototype/www/static\
 COPY configs/supervisor/supervisord.conf /etc/supervisor/supervisord.conf
 COPY configs/supervisor/dop.conf /etc/supervisor/conf.d/dop.conf
 
-RUN . /venv/bin/activate; python manage.py collectstatic -lc --noinput
+#RUN . /venv/bin/activate; python manage.py collectstatic -lc --noinput
 
 RUN echo '' > /var/log/app.log\
    && chown dop:dop /var/log -R\   
    && chown dop:dop /Data_Optimization_Prototype -R
 
 COPY  all.sh /app/all.sh
+
+

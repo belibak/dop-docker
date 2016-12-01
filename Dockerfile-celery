@@ -1,4 +1,4 @@
-FROM dop-base
+FROM ringleaddev/base
 
 COPY celery.sh /app/celery.sh
 RUN ls -alh /app/

@@ -1,8 +1,8 @@
 #django container
 version: "2"
-services:
-  web:
-    #image: 144049946307.dkr.ecr.us-west-2.amazonaws.com/dop-web:latest
+services:  
+      
+  web:    
     build:
       context: .
       dockerfile: Dockerfile-web
@@ -11,7 +11,7 @@ services:
     volumes:
       - .:/app
       - .:/cfgs
-      - /volumes:/volumes            
+      - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype               
     ports:
       - "80:80"
       - "443:443"    
@@ -21,9 +21,8 @@ services:
       - websockets
       - rabbit
       #- mysql
-  
-  celery:
-    #image: 144049946307.dkr.ecr.us-west-2.amazonaws.com/dop-web:latest
+
+  celery:    
     build:
       context: . 
       dockerfile: Dockerfile-celery 
@@ -31,9 +30,10 @@ services:
     volumes:
       - .:/app
       - .:/cfgs
-      - /volumes:/volumes
+      - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype
     links:
       - rabbit
+    
 
   websockets: 
     build:
@@ -42,7 +42,7 @@ services:
     volumes:
       - .:/app
       - .:/cfgs
-      - /volumes:/volumes
+      - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype
     command: /app/./websockets.sh
     ports: 
       - "8283:8283"
@@ -55,6 +55,13 @@ services:
       - "5672:5672"
     env_file:
       - creds/rabbit/creds.env
+  
+  redis:
+    image: redis
+    command: redis-server --requirepass RingLead33
+    ports:
+      - "6379:6379"
+    
       
   #mysql:
   #  image: mysql:8

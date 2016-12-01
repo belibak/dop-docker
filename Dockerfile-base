@@ -17,8 +17,7 @@ RUN apt-get update &&\
   build-essential\
   libssl-dev\
   libkrb5-dev\
-  gcc\
-  git\
+  gcc\  
   libmysqlclient-dev \
   mysql-client \
   python-dev libffi-dev \
@@ -34,9 +33,11 @@ ENV VENV /venv
 RUN virtualenv --python=python2.7 $VENV
 RUN $VENV/bin/pip install -r /requirements.txt
 
+
 COPY react/nvm_install.sh /nvm_install.sh
 
-COPY sources/Data_Optimization_Prototype /Data_Optimization_Prototype
+#COPY sources/Data_Optimization_Prototype /Data_Optimization_Prototype
+RUN mkdir -p /Data_Optimization_Prototype/react
 WORKDIR /Data_Optimization_Prototype/react
 
         # Install nvm with node and npm
@@ -53,18 +54,25 @@ RUN bash /nvm_install.sh \
     && rm -rf ~/.node-gyp\
     && npm cache clear\
     && npm install\
-    && npm install react-tipsy\
-    && npm run build-amazon
+    && npm install react-tipsy
+    
+#&& npm run build-amazon
 
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
-RUN echo '' > /var/log/app.log\
-   && mkdir -p /Data_Optimization_Prototype/datatasks/db_files/\
-   && mkdir /Data_Optimization_Prototype/media/export_files -p\
+WORKDIR /Data_Optimization_Prototype
+
+RUN echo '' > /var/log/app.log\      
    && mkdir /var/log/ringlead\
-   && chown dop:dop /var/log -R\
-   && chown dop:dop /Data_Optimization_Prototype -R
+   && chown dop:dop /var/log -R  
+
+#RUN echo '' > /var/log/app.log\
+#   && mkdir -p /Data_Optimization_Prototype/datatasks/db_files/\
+#   && mkdir /Data_Optimization_Prototype/media/export_files -p\
+#   && mkdir /var/log/ringlead\
+#   && chown dop:dop /var/log -R\
+#   && chown dop:dop /Data_Optimization_Prototype -R
    
 
-
+ENV PATH /usr/lib/python2.7/:$PATH

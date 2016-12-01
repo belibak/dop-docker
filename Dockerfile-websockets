@@ -1,4 +1,4 @@
-FROM dop-base
+FROM ringleaddev/base
 MAINTAINER rusetskialexander@gmail.com
 
 WORKDIR /Data_Optimization_Prototype/
