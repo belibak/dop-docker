@@ -58,7 +58,7 @@ services:
   
   redis:
     image: redis
-    command: redis-server --requirepass RingLead33
+    command: redis-server --requirepass dop
     ports:
       - "6379:6379"
     
