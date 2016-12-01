@@ -7,4 +7,4 @@ nginx/ssl/*
 *.swp
 commit.sh
 /pip-cache
-/creds/rabbit/creds.env
+!/creds/rabbit/creds.env
