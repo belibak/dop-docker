@@ -13,7 +13,7 @@ dependencies:
     #- docker build -f Dockerfile-web .
     #- docker build -f Dockerfile-celery .
     #- docker build -f Dockerfile-websockets . 
-    - docker-compose build
+    - docker-compose -f docker-compose-circle.yml build
     
 test:
   pre:
