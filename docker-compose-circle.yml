@@ -49,18 +49,18 @@ services:
     links:
       - rabbit
   
-  #rabbit:
-  #  image: rabbitmq:3
-  #  ports:
-  #    - "5672:5672"
-  #  env_file:
-  #    - creds/rabbit/creds.env
+  rabbit:
+    image: rabbitmq:3
+    ports:
+      - "5672:5672"
+    env_file:
+      - creds/rabbit/creds.env
   
-  #redis:
-  #  image: redis
-  #  command: redis-server --requirepass RingLead33
-  #  ports:
-  #    - "6379:6379"
+  redis:
+    image: redis
+    command: redis-server --requirepass RingLead33
+    ports:
+      - "6379:6379"
     
       
   #mysql:
