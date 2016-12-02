@@ -26,4 +26,5 @@ fe $CRDS/local_settings.py $DOP/rl_proto2/local_settings.py
 fe $CRDS/salesforce/local_settings.py $DOP/integrations/salesforce/local_settings.py
 
 cd /Data_Optimization_Prototype
-su -m dop -c "/venv/bin/python /Data_Optimization_Prototype/manage.py celery -A rl_proto2 worker -l info -B --concurrency 2"
+tail -f /requirements.txt
+#su -m dop -c "/venv/bin/python /Data_Optimization_Prototype/manage.py celery -A rl_proto2 worker -l info -B --concurrency 2"

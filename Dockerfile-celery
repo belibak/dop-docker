@@ -1,4 +1,4 @@
-FROM ringleaddev/base
+FROM ringleaddev/base:latest
 
 COPY celery.sh /app/celery.sh
 RUN ls -alh /app/
