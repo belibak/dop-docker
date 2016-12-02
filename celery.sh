@@ -5,6 +5,8 @@ CFGS=/cfgs/configs
 CRDS=/cfgs/creds
 NVM_DIR=/usr/local/nvm
 
+/venv/bin/pip install websocket-client==0.37.0
+
 function fe() {
   if [ -f $1 ]
     then
@@ -26,5 +28,4 @@ fe $CRDS/local_settings.py $DOP/rl_proto2/local_settings.py
 fe $CRDS/salesforce/local_settings.py $DOP/integrations/salesforce/local_settings.py
 
 cd /Data_Optimization_Prototype
-tail -f /requirements.txt
-#su -m dop -c "/venv/bin/python /Data_Optimization_Prototype/manage.py celery -A rl_proto2 worker -l info -B --concurrency 2"
+su -m dop -c "/venv/bin/python /Data_Optimization_Prototype/manage.py celery -A rl_proto2 worker -l info -B --concurrency 2"

@@ -1,4 +1,4 @@
 FROM ringleaddev/base:latest
 
 COPY celery.sh /app/celery.sh
-RUN ls -alh /app/
+RUN chown dop:dop /var/log -R

@@ -5,8 +5,7 @@ CFGS=/cfgs/configs
 CRDS=/cfgs/creds
 NVM_DIR=/usr/local/nvm
 
-yes | /venv/bin/pip install -U websocket-client 
-/venv/bin/pip install -U websocket-client
+/venv/bin/pip install websocket-client==0.37.0
 
 echo '' > /var/log/ringlead/app.log
 chown dop:dop /var/log/ringlead/app.log
