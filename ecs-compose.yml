@@ -2,46 +2,46 @@
 version: "2"
 services:  
       
-  web:    
-    image: ringleaddev/web
-    container_name: dop-web
-    command: /app/./all.sh
-    volumes:
-      - .:/app
-      - .:/cfgs
-      - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype               
-    ports:
-      - "80:80"
-      - "443:443"    
-    #restart: always
-    links:
-      - celery
-      - websockets
-      - rabbit
-      #- mysql
+#  web:    
+#    image: ringleaddev/web
+#    container_name: dop-web
+#    command: /app/./all.sh
+#    volumes:
+#      - /home/white/cluster-base:/app
+#      - /home/white/cluster-base:/cfgs
+#      - /home/white/cluster-base/sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype               
+#    ports:
+#      - "80:80"
+#      - "443:443"    
+#    #restart: always
+#    links:
+#      - celery
+#      - websockets
+#      - rabbit
+#      #- mysql
 
   celery:    
     image: ringleaddev/celery
     command: /app/./celery.sh
     volumes:
-      - .:/app
-      - .:/cfgs
-      - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype
+      - /home/white/cluster-base:/app
+      - /home/white/cluster-base:/cfgs
+      - /home/white/cluster-base/sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype
     links:
       - rabbit
     
 
-  websockets: 
-    image: ringleaddev/websockets
-    volumes:
-      - .:/app
-      - .:/cfgs
-      - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype
-    command: /app/./websockets.sh
-    ports: 
-      - "8283:8283"
-    links:
-      - rabbit
+#  websockets: 
+#    image: ringleaddev/websockets
+#    volumes:
+#      - /home/white/cluster-base:/app
+#      - /home/white/cluster-base:/cfgs
+#      - /home/white/cluster-base/sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype
+#    command: /app/./websockets.sh
+#    ports: 
+#      - "8283:8283"
+#    links:
+#      - rabbit
   
   rabbit:
     image: rabbitmq:3
