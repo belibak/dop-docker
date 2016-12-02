@@ -5,8 +5,6 @@ CFGS=/cfgs/configs
 CRDS=/cfgs/creds
 NVM_DIR=/usr/local/nvm
 
-
-pip uninstall websocket websocket-client
 function fe() {
   if [ -f $1 ]
     then

@@ -5,7 +5,9 @@ CFGS=/cfgs/configs
 CRDS=/cfgs/creds
 NVM_DIR=/usr/local/nvm
 
-pip uninstall websocket websocket-client
+yes | /venv/bin/pip install -U websocket-client 
+/venv/bin/pip install -U websocket-client
+
 echo '' > /var/log/ringlead/app.log
 chown dop:dop /var/log/ringlead/app.log
 chmod 777 /var/log/ringlead -R
