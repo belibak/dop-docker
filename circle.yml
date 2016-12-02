@@ -9,7 +9,7 @@ machine:
   
 dependencies:
  pre:     
-    #- git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git sources/Data_Optimization_Prototype
+    - git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git sources/Data_Optimization_Prototype
     - pip install docker-compose
     - docker build --rm=false -t ringleaddev/base -f Dockerfile-base .
     - docker build --rm=false -t ringleaddev/web -f Dockerfile-web .
@@ -26,6 +26,7 @@ deployment:
       #- docker push ringleaddev/web
       #- docker push ringleaddev/celery
       #- docker push ringleaddev/websockets
+      
 
 test:
   pre:
