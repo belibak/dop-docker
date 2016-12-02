@@ -1,0 +1,65 @@
+#django container
+version: "2"
+services:  
+      
+  web:    
+    image: ringleaddev/web
+    container_name: dop-web
+    command: /app/./all.sh
+    volumes:
+      - .:/app
+      - .:/cfgs
+      - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype               
+    ports:
+      - "80:80"
+      - "443:443"    
+    #restart: always
+    links:
+      - celery
+      - websockets
+      - rabbit
+      #- mysql
+
+  celery:    
+    image: ringleaddev/celery
+    command: /app/./celery.sh
+    volumes:
+      - .:/app
+      - .:/cfgs
+      - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype
+    links:
+      - rabbit
+    
+
+  websockets: 
+    image: ringleaddev/websockets
+    volumes:
+      - .:/app
+      - .:/cfgs
+      - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype
+    command: /app/./websockets.sh
+    ports: 
+      - "8283:8283"
+    links:
+      - rabbit
+  
+  rabbit:
+    image: rabbitmq:3
+    ports:
+      - "5672:5672"
+    env_file:
+      - creds/rabbit/creds.env
+  
+  redis:
+    image: redis
+    command: redis-server --requirepass dop
+    ports:
+      - "6379:6379"
+    
+      
+  #mysql:
+  #  image: mysql:8
+  #  ports:
+  #    - "3306:3306"
+  #  env_file:
+  #    - creds/mysql/mysql.env
