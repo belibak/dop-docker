@@ -10,7 +10,7 @@ machine:
 dependencies:
  pre:     
     #- git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git sources/Data_Optimization_Prototype
-    #- pip install docker-compose
+    - pip install docker-compose
     - pip install ansible
     - echo "$Ansible" > /tmp/white_dop.pem
     - chmod 600 /tmp/white_dop.pem
@@ -25,7 +25,7 @@ deployment:
     branch: master
     commands:
       - docker login -e megatest@gmail.com -u $DOCKER_USER -p $DOCKER_PASS
-      - ansible -i ansible/hosts amazon -m setup --private-key /tmp/white_dop.pem
+      - ansible -i ansible/hosts amazon -m -u ubuntu setup --private-key /tmp/white_dop.pem
       #- docker push ringleaddev/base
       #- docker push ringleaddev/web
       #- docker push ringleaddev/celery
