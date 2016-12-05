@@ -11,11 +11,7 @@ dependencies:
  pre:     
     #- git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git sources/Data_Optimization_Prototype
     #- pip install docker-compose
-    - pip install ansible
-    - echo "$Ansible" > /tmp/white_dop.pem
-    - chmod 600 /tmp/white_dop.pem
-    - ssh-agent bash
-    - ssh-add /tmp/white_dop.pem    
+    - pip install ansible        
     #- docker build --rm=false -t ringleaddev/base -f Dockerfile-base .
     #- docker build --rm=false -t ringleaddev/web -f Dockerfile-web .
     #- docker build --rm=false -t ringleaddev/celery -f Dockerfile-celery .
@@ -27,7 +23,7 @@ deployment:
     branch: master
     commands:
       #- docker login -e megatest@gmail.com -u $DOCKER_USER -p $DOCKER_PASS
-      - ansible -i ansible/hosts amazon -u ubuntu -m setup --private-key /tmp/white_dop.pem
+      - ansible -i ansible/hosts amazon -u ubuntu -m setup -vvvv
       #- docker push ringleaddev/base
       #- docker push ringleaddev/web
       #- docker push ringleaddev/celery
