@@ -13,6 +13,7 @@
       file:
         state: absent
         path: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
+      become: true
       ignore_errors: yes
         
     - git:
