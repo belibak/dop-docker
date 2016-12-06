@@ -44,7 +44,7 @@ echo -e "\n\n\n\n\nRunning npm build...\n\n"
 npm run build-amazon
 cd $DOP
 /venv/bin/python manage.py collectstatic -lc --noinput
-#/venv/bin/python manage.py migrate
+/venv/bin/python manage.py migrate
 
 service nginx start
 service supervisor start
