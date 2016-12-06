@@ -23,7 +23,6 @@ deployment:
     branch: master
     commands:
       #- docker login -e megatest@gmail.com -u $DOCKER_USER -p $DOCKER_PASS
-      - ansible -i ansible/hosts amazon -u ubuntu -m setup
       - ansible-playbook -i ansible/hosts -u ubuntu ansible/playbook.yml
       #- docker push ringleaddev/base
       #- docker push ringleaddev/web

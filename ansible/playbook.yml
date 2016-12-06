@@ -5,9 +5,9 @@
       shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose down
       ignore_errors: yes
     
-    - name: removing old containers
-      shell: /bin/bash /home/ubuntu/dop-docker/rm-containers.sh
-      ignore_errors: yes
+    #- name: removing old containers
+    #  shell: /bin/bash /home/ubuntu/dop-docker/rm-containers.sh
+    #  ignore_errors: yes
       
     - name: "cleaning dop-docker sources directory"
       file:
@@ -20,8 +20,8 @@
         repo: 'git@github.com:broadlook-technologies/Data_Optimization_Prototype.git'
         dest: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
     
-    - name: docker-compose build images
-      shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose build
+    #- name: docker-compose build images
+    #  shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose build
     
     - name: run docker-containers
       shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose up -d
