@@ -1,6 +1,10 @@
 # dop-docker
 ##### How to install docker - http://docs-stage.docker.com/engine/installation/
-##### To install docker-compose - ```pip install docker-compose```
+
+* In ubuntu 14.04 and 16.04 you can use install-docker.sh script
+```./docker-install.sh 16.04```
+
+##### To install docker-compose - ```pip install docker-compose``` - only if docker installed manually
 
 #### Clone the dop repo into sources directory
 ```cd dop-docker/sources && git clone dop.git```
@@ -27,7 +31,7 @@
 * creds/salesforce must include  ```local_settings.py``` file
 
 * In creds/rabbitmq/creds.env need to set ``` RABBITMQ_DEFAULT_USER=dop
-RABBITMQ_DEFAULT_PASS=dop``` user and password to be used by RabbitMQ server.
+RABBITMQ_DEFAULT_PASS=dop``` user and password, it be used by RabbitMQ server.
 
 * creds/mysql/mysql.env same as rabbitmq
 
@@ -37,10 +41,8 @@ RABBITMQ_DEFAULT_PASS=dop``` user and password to be used by RabbitMQ server.
 cd dop-docker
 ```
 * build cluster
-```
-./build.sh
-docker-compose up
-```
+  * you can build base image manually - ```docker build -t ringleaddev/base -f Dockerfile-base .```
+  * or run ```docker-compose up```, in this case base image will be downloaded from docker-hub.
 
 * build part of cluster
 ```docker-compose build celery``` websockets, web, rabbit, mysql.
