@@ -11,8 +11,7 @@ dependencies:
  pre:     
     - git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git sources/Data_Optimization_Prototype
     - cd /home/ubuntu/dop-docker; git pull
-    - pip install docker-compose
-    - pip install ansible        
+    - pip install docker-compose ansible            
     #- docker build --rm=false -t ringleaddev/base -f Dockerfile-base .
     #- docker build --rm=false -t ringleaddev/web -f Dockerfile-web .
     #- docker build --rm=false -t ringleaddev/celery -f Dockerfile-celery .
