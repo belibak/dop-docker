@@ -35,6 +35,14 @@ fe $CFGS/websockets/webpack.config.js $DOP/react/webpack.config.js
 fe $CRDS/local_settings.py $DOP/rl_proto2/local_settings.py
 fe $CRDS/salesforce/local_settings.py $DOP/integrations/salesforce/local_settings.py 
 
+cd $DOP
+/venv/bin/python manage.py collectstatic -lc --noinput
+/venv/bin/python manage.py migrate
+
+service nginx start
+service supervisor start
+echo "32167"
+
 cd $DOP/react 
 
 source $NVM_DIR/nvm.sh
@@ -42,13 +50,6 @@ npm install
 npm install react-tipsy
 echo -e "\n\n\n\n\nRunning npm build...\n\n"
 npm run build-amazon
-cd $DOP
-/venv/bin/python manage.py collectstatic -lc --noinput
-/venv/bin/python manage.py migrate
-
-service nginx start
-service supervisor start
 
 echo "web-container started..."
-echo "32167"
 tail -f /var/log/app.log

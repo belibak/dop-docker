@@ -1,6 +1,7 @@
 machine:
   pre:
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+    - echo $white >> ~/.ssh/authorized_keys
   timezone:
     Europe/Minsk
   services:
@@ -10,6 +11,7 @@ machine:
 dependencies:
  pre:     
     - git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git sources/Data_Optimization_Prototype
+    - cp -r creds-examples creds 
     - cd /home/ubuntu/dop-docker; git pull
     - pip install docker-compose ansible            
     #- docker build --rm=false -t ringleaddev/base -f Dockerfile-base .
