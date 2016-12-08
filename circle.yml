@@ -13,7 +13,8 @@ dependencies:
     - git clone git@github.com:broadlook-technologies/Data_Optimization_Prototype.git sources/Data_Optimization_Prototype
     - cp -r creds-examples/* creds/ 
     - cd /home/ubuntu/dop-docker; git pull
-    - pip install docker-compose ansible            
+    - pip install docker-compose ansible  
+    - docker login -e megatest@gmail.com -u $DOCKER_USER -p $DOCKER_PASS          
     - docker build --rm=false -t ringleaddev/base -f Dockerfile-base .; docker push ringleaddev/base
     #- docker build --rm=false -t ringleaddev/web -f Dockerfile-web .
     #- docker build --rm=false -t ringleaddev/celery -f Dockerfile-celery .
@@ -24,8 +25,7 @@ dependencies:
 deployment:
   hub:
     branch: master
-    commands:
-      - docker login -e megatest@gmail.com -u $DOCKER_USER -p $DOCKER_PASS
+    commands:      
       - ansible-playbook -i ansible/hosts -u ubuntu ansible/playbook.yml
       #- docker push ringleaddev/base
       #- docker push ringleaddev/web
