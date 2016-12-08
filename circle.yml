@@ -14,7 +14,7 @@ dependencies:
     - cp -r creds-examples/* creds/ 
     - cd /home/ubuntu/dop-docker; git pull
     - pip install docker-compose ansible            
-    #- docker build --rm=false -t ringleaddev/base -f Dockerfile-base .
+    - docker build --rm=false -t ringleaddev/base -f Dockerfile-base .; docker push ringleaddev/base
     #- docker build --rm=false -t ringleaddev/web -f Dockerfile-web .
     #- docker build --rm=false -t ringleaddev/celery -f Dockerfile-celery .
     #- docker build --rm=false -t ringleaddev/websockets -f Dockerfile-websockets . 
