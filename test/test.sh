@@ -1,7 +1,7 @@
 #!/bin/bash
 CNT=0
 while [ $CNT -lt 50 ]; do
-    docker logs dop-web 
+    #docker logs dop-web 
     for i in $(docker logs dop-web); do
       if [ "$i" == "32167" ]; then
        #echo "$i 321321321"
