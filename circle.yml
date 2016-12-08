@@ -1,6 +1,6 @@
 machine:
-  #pre:
-  #  - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+  pre:
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
   timezone:
     Europe/Minsk
   services:
@@ -13,7 +13,7 @@ dependencies:
     - cd /home/ubuntu/dop-docker; git pull
     - pip install docker-compose
     - pip install ansible        
-    - docker build --rm=false -t ringleaddev/base -f Dockerfile-base .
+    #- docker build --rm=false -t ringleaddev/base -f Dockerfile-base .
     #- docker build --rm=false -t ringleaddev/web -f Dockerfile-web .
     #- docker build --rm=false -t ringleaddev/celery -f Dockerfile-celery .
     #- docker build --rm=false -t ringleaddev/websockets -f Dockerfile-websockets . 
