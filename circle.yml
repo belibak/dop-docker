@@ -18,7 +18,7 @@ dependencies:
     #- docker build --rm=false -t ringleaddev/celery -f Dockerfile-celery .
     #- docker build --rm=false -t ringleaddev/websockets -f Dockerfile-websockets . 
     #- docker-compose -f docker-compose-circle.yml build
-    -docker-compose up -d
+    - docker-compose up -d
 
 deployment:
   hub:
