@@ -1,6 +1,6 @@
 #!/bin/bash
 CNT=0
-while [ $CNT -lt 30 ]; do
+while [ $CNT -lt 50 ]; do
     for i in $(docker logs dop-web); do
       if [ "$i" == "32167" ]; then
        #echo "$i 321321321"
@@ -9,7 +9,7 @@ while [ $CNT -lt 30 ]; do
       fi 
     done
     let CNT=CNT+1
-    echo "sleeping 10 seconds"
+    echo "waiting until web-conreiner starts"
     sleep 10 
 done 
 exit 404
