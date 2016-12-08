@@ -50,4 +50,5 @@ service nginx start
 service supervisor start
 
 echo "web-container started..."
+echo "32167"
 tail -f /var/log/app.log
