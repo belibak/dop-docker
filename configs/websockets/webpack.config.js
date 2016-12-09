@@ -35,7 +35,7 @@ switch(PROD_ENV) {
                 'process.env': {
                     'NODE_ENV': JSON.stringify('production')
                 },
-                'SOCKET_IP': JSON.stringify('192.168.1.80'),
+                'SOCKET_IP': JSON.stringify('amazon-ringlead.tk'),
             }),
             new webpack.optimize.UglifyJsPlugin({
                 minimize: true,
