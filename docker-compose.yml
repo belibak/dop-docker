@@ -46,8 +46,8 @@ services:
     command: /app/./websockets.sh
     ports: 
       - "8283:8283"
-    links:
-      - rabbit
+    #links:
+    #  - rabbit
   
   rabbit:
     image: rabbitmq:3

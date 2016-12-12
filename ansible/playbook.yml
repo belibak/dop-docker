@@ -1,30 +1,57 @@
-- hosts: amazon
-  remote_user: ubuntu
-  tasks:
-    - name: docker-compose stop images
-      shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose down; git pull
-      ignore_errors: yes
-    
-    - name: removing old containers
-      shell: /bin/bash /home/ubuntu/dop-docker/rm-containers.sh
-      ignore_errors: yes
+- name: run-web
+  - hosts: web
+    remote_user: ubuntu
+    tasks:
+      - name: docker-compose stop images
+        shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose down; git pull
+        ignore_errors: yes
       
-    - name: "cleaning dop-docker sources directory"
-      file:
-        state: absent
-        path: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
-      become: true
-      ignore_errors: yes
-    
-    #- name: "git pull build repo"
-    #  shell:     
-    
-    - git:
-        repo: 'git@github.com:broadlook-technologies/Data_Optimization_Prototype.git'
-        dest: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
-    
-    - name: docker-compose build images
-      shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose build
-    
-    - name: run docker-containers
-      shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose up -d
+      - name: removing old containers
+        shell: /bin/bash /home/ubuntu/dop-docker/rm-containers.sh
+        ignore_errors: yes
+        
+      - name: "cleaning dop-docker sources directory"
+        file:
+          state: absent
+          path: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
+        become: true
+        ignore_errors: yes
+      
+      - git:
+          repo: 'git@github.com:broadlook-technologies/Data_Optimization_Prototype.git'
+          dest: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
+      
+      - name: docker-compose build images
+        shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose build
+      
+      - name: run docker-containers
+        shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose up -d
+
+- name: run-websockets
+  - hosts: websockets
+    remote_user: ubuntu
+    tasks:
+      - name: docker-compose stop images
+        shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose down; git pull
+        ignore_errors: yes
+      
+      - name: removing old containers
+        shell: /bin/bash /home/ubuntu/dop-docker/rm-containers.sh
+        ignore_errors: yes
+        
+      - name: "cleaning dop-docker sources directory"
+        file:
+          state: absent
+          path: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
+        become: true
+        ignore_errors: yes
+      
+      - git:
+          repo: 'git@github.com:broadlook-technologies/Data_Optimization_Prototype.git'
+          dest: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
+      
+      - name: docker-compose build images
+        shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose build
+      
+      - name: run docker-containers
+        shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose up -d
