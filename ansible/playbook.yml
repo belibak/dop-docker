@@ -3,7 +3,7 @@
   remote_user: ubuntu
   tasks:
     - name: docker-compose stop images
-      shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose down; git pull
+      shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose down; git stash; git pull
       ignore_errors: yes
     
     - name: removing old containers
@@ -15,7 +15,7 @@
         state: absent
         path: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
         become: true
-        ignore_errors: yes
+      ignore_errors: yes
     
     - git:
         repo: 'git@github.com:broadlook-technologies/Data_Optimization_Prototype.git'
@@ -32,7 +32,7 @@
   remote_user: ubuntu
   tasks:
     - name: docker-compose stop images
-      shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose down; git pull
+      shell: cd /home/ubuntu/dop-docker; /home/ubuntu/.local/bin/docker-compose down; git stash; git pull
       ignore_errors: yes
       
     - name: removing old containers
@@ -44,7 +44,7 @@
         state: absent
         path: /home/ubuntu/dop-docker/sources/Data_Optimization_Prototype
         become: true
-        ignore_errors: yes
+      ignore_errors: yes
         
     - git:
         repo: 'git@github.com:broadlook-technologies/Data_Optimization_Prototype.git'
