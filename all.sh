@@ -30,7 +30,8 @@ cp -r $CFGS/nginx/ssl /ssl
 
 fe $CFGS/websockets/websocket.conf.py "$DOP"/rl_proto2/conf/websocket.conf.py
 fe $CFGS/websockets/Socket.js $DOP/react/app/utils/Socket.js 
-fe $CFGS/websockets/webpack.config.js $DOP/react/webpack.config.js
+#fe $CFGS/websockets/webpack.config.js $DOP/react/webpack.config.js
+cat  $DOP/react/webpack.config.js | sed -e "s/172.31.9.50/amazon-ringlead.tk/" > $DOP/react/webpack.config.js
 
 fe $CRDS/local_settings.py $DOP/rl_proto2/local_settings.py
 fe $CRDS/salesforce/local_settings.py $DOP/integrations/salesforce/local_settings.py 
