@@ -24,7 +24,7 @@ fe $CRDS/salesforce/local_settings.py $DOP/integrations/salesforce/local_setting
 
 cd $DOP/react 
 source $NVM_DIR/nvm.sh
-npm run build-amazon
+#npm run build-amazon
 cd $DOP
 
 service supervisor start

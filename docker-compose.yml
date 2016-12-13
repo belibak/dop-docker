@@ -33,6 +33,7 @@ services:
       - ./sources/Data_Optimization_Prototype/:/Data_Optimization_Prototype
     links:
       - rabbit
+      - redis
     
 
   websockets: 

@@ -10,8 +10,9 @@ var plugins = [];
 switch(PROD_ENV) {
     case '1':
         plugins = [
-            new webpack.optimize.OccurenceOrderPlugin(),
+            new webpack.optimize.OccurrenceOrderPlugin(),
             new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.AggressiveMergingPlugin(),
             new webpack.DefinePlugin({
                 'process.env': {
                     'NODE_ENV': JSON.stringify('production')
@@ -29,8 +30,9 @@ switch(PROD_ENV) {
         break;
     case '2':
         plugins = [
-            new webpack.optimize.OccurenceOrderPlugin(),
+            new webpack.optimize.OccurrenceOrderPlugin(),
             new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.AggressiveMergingPlugin(),
             new webpack.DefinePlugin({
                 'process.env': {
                     'NODE_ENV': JSON.stringify('production')
@@ -41,15 +43,16 @@ switch(PROD_ENV) {
                 minimize: true,
                 compress: {
                     warnings: false
-                }
+                },
             }),
             new BundleTracker({filename: './build/webpack-stats.json'})
         ];
         break;
     default:
         plugins = [
-            new webpack.optimize.OccurenceOrderPlugin(),
+            new webpack.optimize.OccurrenceOrderPlugin(),
             new webpack.optimize.DedupePlugin(),
+            new webpack.optimize.AggressiveMergingPlugin(),
             new webpack.DefinePlugin({
                 'process.env': {
                     'NODE_ENV': JSON.stringify('development')
@@ -65,15 +68,6 @@ module.exports = {
     output: {path: __dirname, filename: 'build/build.js', publicPath: '/'},
     devtool: 'source-map',
     plugins: plugins,
-    externals: {
-        // require("jquery") is external and available
-        //  on the global var jQuery
-        "jquery": "jQuery",
-        "bootstrap": true,
-        "jquery-ui-browserify": true,
-        "moment": "moment",
-        "underscore": "_"
-    },
     module: {
         loaders: [
             {
